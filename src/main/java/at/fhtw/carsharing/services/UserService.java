@@ -1,4 +1,4 @@
-package at.fhtw.carsharing.service;
+package at.fhtw.carsharing.services;
 
 import at.fhtw.carsharing.persistence.entity.ChangeUserRequest;
 import at.fhtw.carsharing.persistence.entity.LoginInfo;
@@ -7,8 +7,6 @@ import at.fhtw.carsharing.persistence.entity.User;
 import at.fhtw.carsharing.security.WebSecurityConfig;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

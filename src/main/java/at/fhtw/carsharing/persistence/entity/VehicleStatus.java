@@ -13,6 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class VehicleStatus {
+    private int id;
     private Position position;
     private Date timestamp;
     private State state;

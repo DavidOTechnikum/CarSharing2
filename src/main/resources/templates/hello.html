@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thyeleaf-extras-springsecurity6"
+      lang="en">
+<head>
+    <title th:text="#{welcome.message}">Getting Started: Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+This is the CarSharing app
+<p>Current time is <span th:text="${serverTime}"/></p>
+<p>
+    Back to <a href="/index">Main Menu</a><br/>
+
+</p>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
