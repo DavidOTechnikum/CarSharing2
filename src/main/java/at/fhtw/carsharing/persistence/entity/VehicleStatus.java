@@ -13,11 +13,10 @@ import java.util.Date;
 @Getter
 @Setter
 public class VehicleStatus {
-    private int id;
     private Position position;
     private Date timestamp;
     private State state;
-    private User driver;
+    private int driverID;
     private double distanceSinceUpdate;
     private int timeSinceUpdate;
 }

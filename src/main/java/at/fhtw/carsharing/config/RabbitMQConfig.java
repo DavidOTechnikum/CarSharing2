@@ -1,8 +1,12 @@
 package at.fhtw.carsharing.config;
 
+import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +18,8 @@ public class RabbitMQConfig {
     public static final String CREATE_INVOICE_QUEUE_NAME = "CreateInvoice";
     public static final String IN_QUEUE_NAME = "InQueue";
     public static final String EXCHANGE ="";
-    public static final String MESSAGE_COUNT_PROPERTY_NAME = "MessageCount";
+    public static final String VEHICLE_ID = "VehicleID";
+    public static final String USER_ID = "UserID";
 
 
     @Bean
@@ -23,8 +28,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue emergencyQueue() {
-        return new Queue(EMERGENCY_QUEUE_NAME, false);
+    public Queue emergencyQueue() {return new Queue(EMERGENCY_QUEUE_NAME, false);
     }
 
     @Bean Queue createInvoiceQueue() {

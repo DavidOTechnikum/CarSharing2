@@ -30,10 +30,14 @@ public HttpStatus createInvoice(@PathVariable("user-id") int id,
                 count++;
             }
         }
-        if (count > 0 && WebSecurityConfig.TokenVerifierManager(usernameToken.getJwtToken(), usernameToken.getUsername())){
-            rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE, RabbitMQConfig.CREATE_INVOICE_QUEUE_NAME, id ,message1 -> {
-                message1.getMessageProperties().getHeaders().put(RabbitMQConfig.MESSAGE_COUNT_PROPERTY_NAME, messageCount.get());
-                return message1;
+        if (count <= 0) {
+            return HttpStatus.NOT_FOUND;
+        }
+
+        if (WebSecurityConfig.TokenVerifierManager(usernameToken.getJwtToken(), usernameToken.getUsername())){
+            rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE, RabbitMQConfig.CREATE_INVOICE_QUEUE_NAME, "invoice", message -> {
+                message.getMessageProperties().getHeaders().put(RabbitMQConfig.USER_ID, id);
+                return message;
             });
 
             return HttpStatus.OK;
